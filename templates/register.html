@@ -1,0 +1,23 @@
+{% extends 'navbar.html' %}
+{% block content %}
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-success" role="alert">
+            {{message}}
+        </div>
+        {% endfor %}
+    {% endif %}
+
+
+<h1>Register page</h1>
+<form action="{% url 'register' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+        {% for form in forms %}
+            <label for="">{{form.label}}</label>
+            <p>{{form}}</p>
+        {% endfor %}
+        <button>Register</button>
+</form>
+
+
+{% endblock %}

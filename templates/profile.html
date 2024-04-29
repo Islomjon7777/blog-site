@@ -1,0 +1,20 @@
+{% extends 'navbar.html' %}
+{% block content %}
+        {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-success" role="alert">
+                {{message}}
+            </div>
+            {% endfor %}
+        {% endif %}
+
+    <div class="container">
+        <h1>Profile</h1>
+        <form action="{% url 'profile' user.id %} "method="POST" class="post-form" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ forms }}
+            <button>Saqlash</button>
+        </form>
+    </div>
+
+{% endblock %} 

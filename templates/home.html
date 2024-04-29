@@ -1,0 +1,58 @@
+{% extends 'navbar.html' %}
+{% block content %}
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-success" role="alert">
+            {{message}}
+        </div>
+        {% endfor %}
+    {% endif %}
+    <h1>Home page</h1>
+    <p>{{user}}</p>
+
+
+    <!-- POSTLAR -->
+    <div class="container mt-5">
+        <div class="w-100 border d-flex align-items-center justify-content-between" style="height: 100px;">
+          <h1 class="text-danger">Yaxshi yangilik</h1>
+          <span class="fs-1 text-danger">yangilik ( {{yaxshi.count}} ) ta</span>
+        </div>
+        <div class="row mt-4">
+            {% for y in yaxshi %}
+              <div class="col-4">
+                <a href="{% url 'comment' y.id %}">
+                  <div class="card">
+                    <img style="height: 350px;" src="{{ y.post_image.url }}" alt="{{y.title}}">
+                    <h1 class="text-danger">{{y.title}}</h1>
+                    <p>{{y.text}}</p>
+                    <p>{{y.created}} <i class="fa-solid fa-eye"></i>  <i class="fa-solid fa-comment"></i> </p>
+                  </div>
+                </a>
+              </div>
+            {% endfor %}
+          
+        </div>
+      </div>
+
+      <div class="container mt-5">
+        <div class="w-100 border d-flex align-items-center justify-content-between" style="height: 100px;">
+          <h1 class="text-danger">Yomon yangilik</h1>
+          <span class="fs-1 text-danger">yangilik ( {{yomon.count}} ) ta</span>
+        </div>
+        <div class="row mt-4">
+            {% for n in yomon %}
+              <div class="col-4">
+                <a href="{% url 'comment' n.id %}">
+                  <div class="card">
+                    <img style="height: 350px;" src="{{ n.post_image.url }}" alt="{{n.title}}">
+                    <h1 class="text-danger">{{n.title}}</h1>
+                    <p>{{n.text}}</p>
+                    <p>{{n.created}} <i class="fa-solid fa-eye"></i>  <i class="fa-solid fa-comment"></i> </p>
+                  </div>
+                </a>
+              </div>
+            {% endfor %}
+        </div>
+      </div>
+
+{% endblock %}
