@@ -119,7 +119,7 @@ def CommentView(request,pk):
     form = CommentForm()
     
     ctx = {
-        'form': form,
+        'forms': form,
         'posts': post_s,
         'comment_id': comment_id,
         'comment_count': comment_id_count,
